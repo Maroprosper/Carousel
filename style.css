@@ -15,6 +15,7 @@ body {
     opacity: 1;
     color: white;
     height: 100vh;
+    will-change: opacity;
 }
 .container1{
     background: #E47900;
@@ -32,13 +33,13 @@ body {
     background: #CF9902;
 }
 .active{
-    transition: 3s opacity -2s ease-in;
-    animation: 3s fadeIn -2s ease-in;
+    transition: 3s opacity -2.5s  ease-in-out;
+    animation: 3s fadeIn -2.5s ease-in-out;
     opacity: 1;
 }
 .inactive{
-    transition: 3s opacity 1s ease-out;
-    animation: 3s fadeOut 1s ease-out;
+    transition: 5s opacity -1s ease-in-out;
+    animation: 5s fadeOut -1s ease-in-out;
 }
 .none{
     display: none;
@@ -175,51 +176,56 @@ main {
     height: 60px;
     padding: 0;
 }
+.move, .first, .second{
+    will-change: transform;
+}
 .moveLeft{
     transition: transform 2s ease-out;
     animation: 2s moveElement ease-out forwards;
 }
 .moveRight{
-    transition: transform 2s ease-in -500ms;
-    animation: 2s bringElement ease-in  -500ms forwards;
+    transition: transform 2s ease-in -1s;
+    animation: 2s bringElement ease-in  -1s forwards;
 }
+.shake{
+    transition: transform 2s ease-in -1s;
+    animation: 2s vibrate ease-in  -1s forwards;
+}
+
 
 @keyframes moveElement{
     from{
-        transform: translate(0, 0) scale(1);
+        transform: translate(0, 0);
     }   
     to{
-        transform: translate(-150%, -30px) scale(1.25);
+        transform: translate(-100%, 0);
     }
 }
 
 @keyframes bringElement{
     from{
-        transform: translate(-50%, -30px) scale(1.25);
+        transform: translate(50%, 0) scale(1);
     }
     to{
         transform: translate(0, 0) scale(1);
     }
 }
 
-@keyframes fadeOut{
+@keyframes vibrate{
     0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0.95;
+        transform: translateX(25%);
     }
     100%{
-        opacity: 0.9;
+        transform: translateY(0);
     }
 }
 
 @keyframes fadeIn{
     0%{
-        opacity: 0.9;
+        opacity: 0.75;
     }
     50%{
-        opacity: 0.95;
+        opacity: 0.85;
     }
     100%{
         opacity: 1;

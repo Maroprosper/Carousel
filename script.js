@@ -21,8 +21,10 @@ const carousel = () => {
     for(let i = 0; i < 5; i++) {
         if(!((slides[i].className).includes('none'))){
             setTimeout(() => {slides[i].classList.add('none');}, 2000);
-            slides[i].querySelectorAll('.move').forEach(item => {
+            slides[i].querySelectorAll('.second').forEach(item => {
                 item.classList.remove('moveRight')});
+            slides[i].querySelectorAll('.first').forEach(item => {
+                item.classList.remove('shake')});
             if(i >= 1){
                 document.querySelectorAll('.move').forEach(item => {
                     item.classList.remove('moveLeft')});
@@ -33,8 +35,10 @@ const carousel = () => {
         if(i === count){
             setTimeout(() => {slides[i].classList.remove('none');}, 2000);
             slides[i].classList.add('active');
-            slides[i].querySelectorAll('.move').forEach(item => {
+            slides[i].querySelectorAll('.second').forEach(item => {
                 item.classList.add('moveRight')});
+            slides[i].querySelectorAll('.first').forEach(item => {
+                item.classList.add('shake')});
             if(i >= 1){
                 slides[i - 1].classList.add('inactive');
                 slides[i - 1].querySelectorAll('.move').forEach(item => {
