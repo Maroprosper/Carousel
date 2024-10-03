@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    font-family: "Poppins", sans-serif;
+}
+body {
+    margin: 0;
+    position: fixed;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 1;
+    color: white;
+    height: 100vh;
+}
+.container1{
+    background: #E47900;
+}
+.container2{
+    background: #BA0219;
+}
+.container3{
+    background: #193B67;
+}
+.container4{
+    background: #3A6300;
+}
+.container5{
+    background: #CF9902;
+}
+.active{
+    transition: 3s opacity -2s ease-in;
+    animation: 3s fadeIn -2s ease-in;
+    opacity: 1;
+}
+.inactive{
+    transition: 3s opacity 1s ease-out;
+    animation: 3s fadeOut 1s ease-out;
+}
+.none{
+    display: none;
+}
+.transparent{
+    opacity: 0;
+}
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+header .logo {
+    height: 10vh;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a.active {
+    border-bottom: 2px solid white;
+    padding-bottom: 2px;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70vh
+}
+.left {
+    position: relative;
+    width: 22%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.right{
+    display: flex;
+    gap: 8%;
+    align-items: center;
+    width: 45%;
+    height: 100%;
+    position: relative;
+    justify-content: space-between;
+}
+.mid{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    width: 20%;
+    align-self: center;
+}
+.right img{
+    width: 100%;
+    height: 100%
+}
+.half{
+    width: 50%;
+}
+.half img{
+    position: relative;
+    left: 70%;
+}
+.vector{
+    height: 100%;
+    width: 0;
+    background: #FFFDFDC2;
+    border: 0.5px solid #FFFDFDC2;
+    position: relative;
+}
+.orange-slices {
+    width: 100%;
+    position: relative;
+    height: 100%;
+}    
+.mid h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.mid p {
+    font-size: 16px;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.mid button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: auto;
+    top: -60px;
+    left: -30px;
+}
+
+.next>button {
+    background-color: transparent;
+    color: white;
+    border: 3px solid #FFFDFD;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+}
+.moveLeft{
+    transition: transform 2s ease-out;
+    animation: 2s moveElement ease-out forwards;
+}
+.moveRight{
+    transition: transform 2s ease-in -500ms;
+    animation: 2s bringElement ease-in  -500ms forwards;
+}
+
+@keyframes moveElement{
+    from{
+        transform: translate(0, 0) scale(1);
+    }   
+    to{
+        transform: translate(-150%, -30px) scale(1.25);
+    }
+}
+
+@keyframes bringElement{
+    from{
+        transform: translate(-50%, -30px) scale(1.25);
+    }
+    to{
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes fadeOut{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.95;
+    }
+    100%{
+        opacity: 0.9;
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0.9;
+    }
+    50%{
+        opacity: 0.95;
+    }
+    100%{
+        opacity: 1;
+    }
+}
