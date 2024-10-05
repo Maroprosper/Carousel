@@ -1,51 +1,49 @@
-const slider = document.getElementById('slider');
+const button = document.querySelector('.next');
+const fruit = document.querySelector('.orange-slices');
+const text = document.querySelector('.text');
+const backgrounds = ['#E47900', '#BA0219', '#193B67', '#3A6300', '#CF9902'];
+const words = ['Orange', 'Strawberry', 'Blueberry', 'Apple', 'Pineapple'];
+const drinks = ['./assets/orange.png', './assets/strawberry-full.png', './assets/blueberry.png', './assets/apple.png', './assets/pineapple.png'];
+const fruits = ['./assets/orange fruit.png', './assets/strawberry fruit.png', './assets/blueberry fruit.png', './assets/apple fruit.png', './assets/pineapple fruit.png'];
+const move = document.querySelectorAll('.move');
 
-// Array of image URLs
-const images = [
-    './assets/orange.png', 
-    './assets/strawberry-full.png', 
-    './assets/blueberry.png', 
-    './assets/apple.png', 
-    './assets/pineapple.png'
-];
+let time;
+button.addEventListener('click', () => {
+        clearTimeout(time);
+        text.classList.remove('active');
+        text.classList.add('inactive');
+        fruit.classList.remove('active');
+        fruit.classList.add('inactive');
+        for(let i = 0; i < drinks.length; i++){
+            move[i].classList.toggle('moveRight');
+        }
+        setTimeout(carousel, 500);
+});
 
-// Dynamically create slides and add them to the DOM
-function renderSlides() {
-  images.forEach((imgSrc, index) => {
-    const slideDiv = document.createElement('div');
-    slideDiv.classList.add('slide');
-    slideDiv.innerHTML = `<img src="${imgSrc}" alt="Image ${index + 1}">`;
-    slider.appendChild(slideDiv);
-  });
+
+const slide = document.querySelector('.container');
+let count = 0;
+
+const carousel = () => {
+    if (count > 4) {
+        count = 0;
+    }
+    for(let i = 0; i < 5; i++) {        
+            
+        if(i === count){
+            slide.style.background = `${backgrounds[i]}`;
+            fruit.src = `${fruits[i]}`;
+            text.textContent = `${words[i]}`;
+            text.classList.remove('inactive');
+            text.classList.add('active');
+            fruit.classList.remove('inactive');
+            fruit.classList.add('active');
+            for(let i = 0; i < drinks.length; i++){
+                move[i].classList.toggle('moveLeft');
+            }
+            time = setTimeout(() => {carousel();}, 30000);
+        }
+    }
+    count++;
 }
-
-// Initialize the slides
-renderSlides();
-
-let currentIndex = 0;
-
-// Function to move slides on button click
-function moveSlides() {
-  const slides = document.querySelectorAll('.slide');
-  
-  // Add a class that moves all the images to the left and fades out the first one
-  slider.classList.add('move-slider');
-  slides[0].classList.add('fade-out');
-
-  // After the transition completes, rearrange the slides
-  setTimeout(() => {
-    // Remove the first image and append it to the end
-    slider.appendChild(slides[0]);
-
-    // Reset the slider position and remove the fade-out class
-    slider.classList.remove('move-slider');
-    slides[0].classList.remove('fade-out');
-
-    // Ensure all images are reset for the next transition
-    slider.style.transition = 'none';
-    slider.style.transform = 'translateX(0)';
-  }, 4100); // Duration should match the combined transition for smooth effect
-}
-
-// Event listener for the button
-document.getElementById('nextBtn').addEventListener('click', moveSlides);
+carousel();
