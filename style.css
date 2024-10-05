@@ -15,31 +15,19 @@ body {
     opacity: 1;
     color: white;
     height: 100vh;
-    will-change: opacity;
+    will-change: background;
+    transition: 750ms background ease-in-out;
 }
 .container1{
     background: #E47900;
 }
-.container2{
-    background: #BA0219;
-}
-.container3{
-    background: #193B67;
-}
-.container4{
-    background: #3A6300;
-}
-.container5{
-    background: #CF9902;
-}
 .active{
-    transition: 3s opacity -2.5s  ease-in-out;
-    animation: 3s fadeIn -2.5s ease-in-out;
+    transition: 1s opacity ease-in;
     opacity: 1;
 }
 .inactive{
-    transition: 5s opacity -1s ease-in-out;
-    animation: 5s fadeOut -1s ease-in-out;
+    transition: 1s opacity ease-out;
+    opacity: 0;
 }
 .none{
     display: none;
@@ -180,12 +168,12 @@ main {
     will-change: transform;
 }
 .moveLeft{
-    transition: transform 2s ease-out;
-    animation: 2s moveElement ease-out forwards;
+    transition: transform 1s linear;
+    animation: 1s moveElement linear forwards;
 }
 .moveRight{
-    transition: transform 2s ease-in -1s;
-    animation: 2s bringElement ease-in  -1s forwards;
+    transition: transform 1s linear;
+    animation: 1s moveElement linear forwards;
 }
 .shake{
     transition: transform 2s ease-in -1s;
