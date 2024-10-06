@@ -16,17 +16,17 @@ body {
     color: white;
     height: 100vh;
     will-change: background;
-    transition: 750ms background ease-in-out;
+    transition: 2s background ease-in-out;
 }
 .container1{
     background: #E47900;
 }
 .active{
-    transition: 1s opacity ease-in;
+    transition: 2s opacity ease-in;
     opacity: 1;
 }
 .inactive{
-    transition: 1s opacity ease-out;
+    transition: 2s opacity ease-out;
     opacity: 0;
 }
 .none{
@@ -37,7 +37,7 @@ body {
 }
 header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
 }
@@ -75,20 +75,20 @@ main {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 70vh
+    height: 70vh;
+    gap: 10%;
 }
 .left {
     position: relative;
-    width: 22%;
+    width: 28%;
     height: 100%;
     display: flex;
     align-items: center;
 }
 .right{
     display: flex;
-    gap: 8%;
     align-items: center;
-    width: 45%;
+    width: 48%;
     height: 100%;
     position: relative;
     justify-content: space-between;
@@ -98,26 +98,47 @@ main {
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    width: 20%;
+    width: 24%;
     align-self: center;
 }
-.right img{
-    width: 100%;
-    height: 100%
-}
-.half{
-    width: 50%;
-}
-.half img{
+.slider-container {
+    width: 100%;  /* Adjust to fit two images */
+    height: 100%; /* Set desired height */
+    overflow: hidden;
     position: relative;
-    left: 70%;
-}
+    z-index: 2;
+  }
+  
+  .slider {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    left: 15%;
+  }
+  
+  .slide {
+    min-width: 66.7%; /* Two slides visible at a time */
+    height: 100%;
+    transition: opacity 1s linear, transform 1s linear; /* Apply transition to both opacity and transform */
+  }
+  
+  .slide img {
+    width: 90%;
+    height: 100%;
+    left: 5%;
+    position: relative;
+  }
 .vector{
     height: 100%;
     width: 0;
     background: #FFFDFDC2;
     border: 0.5px solid #FFFDFDC2;
-    position: relative;
+    position: absolute;
+}
+#vector2{
+    left: 65%;
 }
 .orange-slices {
     width: 100%;
@@ -164,58 +185,8 @@ main {
     height: 60px;
     padding: 0;
 }
-.move, .first, .second{
-    will-change: transform;
-}
-.moveLeft{
-    transition: transform 1s linear;
-    animation: 1s moveElement linear forwards;
-}
-.moveRight{
-    transition: transform 1s linear;
-    animation: 1s moveElement linear forwards;
-}
-.shake{
-    transition: transform 2s ease-in -1s;
-    animation: 2s vibrate ease-in  -1s forwards;
-}
-
-
-@keyframes moveElement{
-    from{
-        transform: translate(0, 0);
-    }   
-    to{
-        transform: translate(-100%, 0);
-    }
-}
-
-@keyframes bringElement{
-    from{
-        transform: translate(50%, 0) scale(1);
-    }
-    to{
-        transform: translate(0, 0) scale(1);
-    }
-}
-
-@keyframes vibrate{
-    0%{
-        transform: translateX(25%);
-    }
-    100%{
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn{
-    0%{
-        opacity: 0.75;
-    }
-    50%{
-        opacity: 0.85;
-    }
-    100%{
-        opacity: 1;
-    }
+.fade-out{
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: opacity 1s linear, transform 1s linear; /* Smooth fade and movement */
 }
